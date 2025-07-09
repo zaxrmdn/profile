@@ -18,5 +18,5 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
-          deploy_key: ${{ secrets.DEPLOY_KEY }} # or use GITHUB_TOKEN
-          publish_dir: ./
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # ← ganti ini
+          publish_dir: ./  # folder root atau `dist/`
