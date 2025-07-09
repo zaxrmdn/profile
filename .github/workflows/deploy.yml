@@ -1,0 +1,22 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node (for possible asset pipelines)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Build # (optional – static site so nothing to build)
+        run: echo "Skip build"
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.DEPLOY_KEY }} # or use GITHUB_TOKEN
+          publish_dir: ./
